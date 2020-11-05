@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 
+// Material UI styles hook
 const useStyles = makeStyles({
   root: {
     width: "20%",
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
+// TODO item with checkbox, text and delete icon
 const TodoItem = ({ itemText }) => (
   <ListItem>
     <ListItemIcon>
@@ -28,12 +30,15 @@ const TodoItem = ({ itemText }) => (
   </ListItem>
 );
 
+// Text field to add a new item
 const AddItemField = () => (
   <TextField variant="filled" label="Add new item"></TextField>
 );
 
+// Item count display
 const ItemCount = () => <p>Item count: 3</p>;
 
+// Main container for TODO list
 const TodoList = () => {
   const classes = useStyles();
   return (
@@ -48,6 +53,18 @@ const TodoList = () => {
   );
 };
 
-const App = () => <TodoList></TodoList>;
+const App = () => (
+  <>
+    <TodoList />
+    <p style={{ padding: "2em" }}>
+      Go to <a href="https://github.com/benibienz/site">the repo</a> to see the
+      mockup and discussion and{" "}
+      <a href="https://github.com/benibienz/site/blob/master/fwd/src/App.js">
+        App.js
+      </a>{" "}
+      to see the source code
+    </p>
+  </>
+);
 
 export default App;
