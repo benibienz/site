@@ -13,7 +13,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 const useStyles = makeStyles({
   root: {
     width: "20%",
-    margin: "2em",
+    margin: "3em",
     padding: "2em",
   },
 });
