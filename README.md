@@ -21,3 +21,6 @@ Thus, the state representation is:
 - The value of each checkbox
 - The text in the the "add new item" field
 - The item count
+
+(lab 7b note: when implementing I ended up putting the item components themselves into a state array and keeping
+a "current id" state variable. This allows the TodoList component to keep track of which item to delete.)
