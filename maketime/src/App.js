@@ -6,8 +6,8 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import { EventAvailable } from "@material-ui/icons";
-import React from "react";
-import ActivityList from "./activities/ActivityListLayout";
+import { useState } from "react";
+import ActivityList from "./activities/ActivityList";
 import "./App.scss";
 import Schedule from "./schedule/Schedule";
 
@@ -33,10 +33,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     padding: theme.spacing(1),
     backgroundColor: theme.palette.primary.dark,
-    "& > h3": {
-      color: "white",
-      margin: theme.spacing(0.5),
-    },
   },
   icon: {
     marginLeft: theme.spacing(2),
@@ -45,17 +41,26 @@ const useStyles = makeStyles((theme) => ({
 
 const Layout = () => {
   const classes = useStyles();
+  const [activities, setActivities] = useState();
+
   return (
     <div className={classes.root}>
       <div className={classes.title}>
-        <Typography variant="h3" color="textSecondary" align="center">
-          Make Time
+        <Grid container direction="row" alignItems="center" justify="center">
+          <Typography
+            variant="h3"
+            display="inline"
+            align="center"
+            style={{ color: "white" }}
+          >
+            Make Time
+          </Typography>
           <EventAvailable
             color="secondary"
             fontSize="large"
             className={classes.icon}
           />
-        </Typography>
+        </Grid>
       </div>
       <div className={classes.grid}>
         <Grid container spacing={1} justify="center">
@@ -64,6 +69,19 @@ const Layout = () => {
           </Grid>
           <Grid item xs={12} md={8} lg={7} xl={7}>
             <Schedule />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h5" align="center">
+              Go to{" "}
+              <a
+                href="https://github.com/benibienz/site/tree/project2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                the repo
+              </a>{" "}
+              to see the mockup and discussion
+            </Typography>
           </Grid>
         </Grid>
       </div>

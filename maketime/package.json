@@ -1,6 +1,5 @@
 {
   "name": "maketime",
-  "homepage": "http://creative.colorado.edu/~bebi1437/fwd/portfolio/projects/maketime",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
