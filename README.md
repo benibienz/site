@@ -1,26 +1,42 @@
-# Lab 7a
+# Milestone 2
 
-## Mockup and component hierarchy
+## Components
 
-![Mockup](todolist.png)
+![Component hierarchy](hierarchy.png)
+![Components](components.png)
+![Dialog components](dialogs.png)
 
-## Minimal representation of state
+## Representation of state
 
-Each checkbox has checked/unchecked state, but this state does not need to be "seen" by another component
-so it can live locally in the checkbox components themselves.
+Note: some terminology has changed between mockup and static app. Namely:
 
-The AddItemField has the user's text input as its local state. When the user presses enter, the current state will
-be the argument to a function that creates a new TodoItem.
+- Calendar -> Schedule
+- (hours) Budget -> Target (hours)
 
-The total number of items can be implemented as a simple counter. It will live in the main TodoList component.
-The setter function can be generated with the `useState()` hook and passed to the AddItemField component. Its value
-can likewise be passed to the ItemCount component.
+There are two main components in this app: the Activity List and the Schedule. These components have their own local states but some state must be shared between them.
 
-Thus, the state representation is:
+### Shared State
 
-- The value of each checkbox
-- The text in the the "add new item" field
-- The item count
+- Array of activity objects with the following data:
+  - Name
+  - Target hours
+  - Hours scheduled
 
-(lab 7b note: when implementing I ended up putting the item components themselves into a state array and keeping
-a "current id" state variable. This allows the TodoList component to keep track of which item to delete.)
+This array can be used to generate table rows (Activity List) and calendar events (Schedule). The Total and Remaining hours and the Scheduled hours column can also be directly caclulated from this array.
+
+### Activity List
+
+- Target hours field text for each activity
+- "Add new activity" dialog field text
+
+### Schedule
+
+- `react-big-calendar` may have internal state to handle events and drag-n-drop functionality
+
+### Material UI components
+
+- TextFields and Buttons have local states such as 'focused' and 'selected' for accessiblity
+
+## Team Members and Responsibilities
+
+I am the only team member and am responsible for everything
