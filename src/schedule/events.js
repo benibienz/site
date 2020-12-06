@@ -8,15 +8,17 @@ const generateSleepDefaults = (startDate) => {
     let eventEnd = new Date(eventStart.getTime() + 8 * 60 * 60 * 1000);
 
     eventArray.push({
+      id: day,
       title: "Sleep",
       start: eventStart,
       end: eventEnd,
-      allDay: false,
-      resource: "Sleep",
     });
   }
 
   return eventArray;
 };
 
-export { generateSleepDefaults };
+const sumHours = (eventsArray) =>
+  eventsArray.reduce((a, b) => a + (b.end - b.start) / 1000 / 60 / 60, 0);
+
+export { generateSleepDefaults, sumHours };

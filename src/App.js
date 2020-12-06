@@ -9,7 +9,10 @@ import { EventAvailable } from "@material-ui/icons";
 import { useState } from "react";
 import ActivityList from "./activities/ActivityList";
 import "./App.scss";
-import Schedule from "./schedule/Schedule";
+import { Schedule, startDate } from "./schedule/Schedule";
+import { generateSleepDefaults } from "./schedule/events";
+import generateColorList from "./colors";
+import grey from "@material-ui/core/colors/grey";
 
 const theme = createMuiTheme({
   typography: {
@@ -39,9 +42,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const defaultActivities = [
+  {
+    name: "Sleep",
+    targetHours: 56,
+    events: generateSleepDefaults(startDate),
+    color: grey,
+  },
+];
+
 const Layout = () => {
   const classes = useStyles();
-  const [activities, setActivities] = useState();
+  const [activities, setActivities] = useState(defaultActivities);
+  const [colors, setColors] = useState(generateColorList());
+
+  const addActivity = (activity) => {
+    activity = { ...activity, color: colors[0] };
+    setColors((colors) => colors.slice(1));
+    setActivities((activities) => [...activities, activity]);
+  };
+
+  const deleteActivity = (name) => {
+    let deletedColor = activities.find((a) => a.name === name).color;
+    setColors((colors) => [...colors, deletedColor]);
+    setActivities((activities) => activities.filter((a) => a.name !== name));
+  };
+
+  const setTargetHours = (name, val) =>
+    setActivities((activities) =>
+      activities.map((a) =>
+        a.name === name ? { ...a, targetHours: parseInt(val) } : a
+      )
+    );
+
+  console.log(`Activities:`);
+  console.log(activities[0].events);
 
   return (
     <div className={classes.root}>
@@ -65,10 +100,19 @@ const Layout = () => {
       <div className={classes.grid}>
         <Grid container spacing={1} justify="center">
           <Grid item xs={12} sm={8} md={6} lg={4} xl={3}>
-            <ActivityList />
+            <ActivityList
+              activities={activities}
+              addActivity={addActivity}
+              deleteActivity={deleteActivity}
+              setTargetHours={setTargetHours}
+            />
           </Grid>
           <Grid item xs={12} md={8} lg={7} xl={7}>
-            <Schedule />
+            <Schedule
+              activities={activities}
+              setActivities={setActivities}
+              largeSize
+            />
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h5" align="center">

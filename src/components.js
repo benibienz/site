@@ -1,33 +1,40 @@
 import {
   withStyles,
-  makeStyles,
   Paper,
   Typography,
   TableRow,
   TableCell,
 } from "@material-ui/core";
+import CheckCircle from "@material-ui/icons/CheckCircle";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(1),
-    padding: theme.spacing(2),
-    "& > h4": {
-      marginBottom: theme.spacing(1),
-    },
-  },
-}));
-
-const Container = ({ title, children }) => {
-  const classes = useStyles();
+const UnstyledContainer = ({ title, children, classes }) => {
   return (
     <Paper className={classes.root}>
       <Typography variant="h4" align="center">
         {title}
       </Typography>
-      {children}
+      <div className={classes.view}>{children}</div>
     </Paper>
   );
 };
+
+const Container = withStyles((theme) => ({
+  root: {
+    margin: theme.spacing(1),
+    padding: theme.spacing(2, 0, 0, 2),
+    "& > h4": {
+      marginBottom: theme.spacing(1),
+    },
+  },
+  view: {
+    borderTopStyle: "solid",
+    borderLeftStyle: "solid",
+    borderWidth: "0.5px",
+    borderColor: theme.palette.grey[300],
+    overflow: "scroll",
+    maxHeight: "70vh",
+  },
+}))(UnstyledContainer);
 
 const DividerTableRow = withStyles((theme) => ({
   root: {
@@ -36,10 +43,17 @@ const DividerTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const NumberCell = withStyles(() => ({
+const NumberCell = withStyles({
   root: {
     fontSize: "1.1rem",
   },
-}))(TableCell);
+})(TableCell);
 
-export { Container, DividerTableRow, NumberCell };
+const CheckIcon = withStyles((theme) => ({
+  root: {
+    marginLeft: theme.spacing(1),
+    color: theme.palette.success.main,
+  },
+}))(CheckCircle);
+
+export { Container, DividerTableRow, NumberCell, CheckIcon };

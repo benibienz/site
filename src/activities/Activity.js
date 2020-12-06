@@ -1,36 +1,29 @@
 import {
   Grid,
-  Chip,
   makeStyles,
   TableCell,
   TableRow,
   TextField,
 } from "@material-ui/core";
-import CheckCircle from "@material-ui/icons/CheckCircle";
-import purple from "@material-ui/core/colors/purple";
-import { useState } from "react";
 import { NumberCell } from "../components";
+import Chip from "./Chip";
+import { CheckIcon } from "../components";
 
 const useStyles = makeStyles((theme) => ({
   inputHours: {
     margin: theme.spacing(1),
     width: "9ch",
   },
-  // TODO: assign different colors to each new chip
-  chip: {
-    backgroundColor: purple[700],
-    "&:focus": {
-      backgroundColor: purple[500],
-    },
-  },
-  check: {
-    marginLeft: theme.spacing(1),
-    color: theme.palette.success.main,
-  },
 }));
 
-const Activity = ({ name, handleDelete }) => {
-  const [hours, setHours] = useState(56);
+const Activity = ({
+  name,
+  color,
+  handleDelete,
+  targetHours,
+  setTargetHours,
+  scheduledHours,
+}) => {
   const classes = useStyles();
 
   return (
@@ -40,7 +33,7 @@ const Activity = ({ name, handleDelete }) => {
           label={name}
           onDelete={handleDelete}
           color="primary"
-          className={classes.chip}
+          background={color}
         />
       </TableCell>
       <TableCell align="center">
@@ -50,14 +43,14 @@ const Activity = ({ name, handleDelete }) => {
           type="number"
           size="small"
           label="Hours"
-          value={hours}
-          onChange={(e) => setHours(e.target.value)}
+          value={targetHours}
+          onChange={(e) => setTargetHours(name, e.target.value)}
         />
       </TableCell>
       <NumberCell align="center">
         <Grid container direction="row" alignItems="center" justify="center">
-          56
-          <CheckCircle className={classes.check} />
+          {scheduledHours}
+          {scheduledHours >= targetHours && <CheckIcon />}
         </Grid>
       </NumberCell>
     </TableRow>
