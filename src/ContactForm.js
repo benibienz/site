@@ -33,7 +33,7 @@ export default function ContactForm() {
       action="/success"
       method="post"
       data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      data-netlify-honeypot="age"
     >
       <input type="hidden" name="form-name" value="contact" />
 
@@ -49,7 +49,7 @@ export default function ContactForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             type="text"
-            id="name"
+            name="name"
             label="Name"
             variant="filled"
             onChange={(e) => setIsName(!!e.target.value)}
@@ -58,7 +58,7 @@ export default function ContactForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             type="email"
-            id="email"
+            name="email"
             label="Email"
             variant="filled"
             onChange={(e) => setIsEmail(!!e.target.value)}
@@ -66,7 +66,7 @@ export default function ContactForm() {
         </Grid>
         <Grid item xs={12}>
           <TextareaAutosize
-            id="message"
+            name="message"
             placeholder="Message"
             rowsMin={4}
             className={classes.msg}
