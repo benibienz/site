@@ -11,13 +11,13 @@ import { useState } from "react";
 const useStyles = makeStyles((theme) => ({
   grid: {
     padding: theme.spacing(1),
-    minWidth: "40vw",
-    maxWidth: "40ch",
+    minWidth: "100vw",
+    // maxWidth: "50ch",
   },
   msg: {
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.body1.fontSize,
-    width: "100%",
+    width: "40ch",
   },
 }));
 
@@ -42,11 +42,12 @@ export default function ContactForm() {
       </Typography>
       <Grid
         container
-        spacing={2}
+        spacing={3}
         className={classes.grid}
-        justify="space-evenly"
+        alignItems="center"
+        direction="column"
       >
-        <Grid item xs={12} sm={6}>
+        <Grid item>
           <TextField
             type="text"
             name="name"
@@ -55,7 +56,7 @@ export default function ContactForm() {
             onChange={(e) => setIsName(!!e.target.value)}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item>
           <TextField
             type="email"
             name="email"
@@ -64,24 +65,26 @@ export default function ContactForm() {
             onChange={(e) => setIsEmail(!!e.target.value)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item>
           <TextareaAutosize
             name="message"
             placeholder="Message"
-            rowsMin={4}
+            rowsMin={5}
             className={classes.msg}
             onChange={(e) => setIsMsg(!!e.target.value)}
           />
         </Grid>
-        <Button
-          type="submit"
-          variant="contained"
-          size="large"
-          color="primary"
-          disabled={!isName || !isEmail || !isMsg}
-        >
-          Send
-        </Button>
+        <Grid item>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            color="primary"
+            disabled={!isName || !isEmail || !isMsg}
+          >
+            Send
+          </Button>
+        </Grid>
       </Grid>
     </form>
   );
