@@ -27,7 +27,7 @@ export default function Index() {
   const classes = useStyles();
   return (
     <Layout>
-      <Grid container spacing={5} justify="center" className={classes.grid}>
+      <Grid container spacing={3} justify="center" className={classes.grid}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h4" gutterBottom align="center">
             Hi.
@@ -45,7 +45,6 @@ export default function Index() {
             STEM extension will grant me{" "}
             <strong>3 years of work authorization</strong> before I require visa
             sponsorship. <br />
-            <br />
           </Typography>
         </Grid>
         <Grid item container xs={12} sm={5} justify="center">
