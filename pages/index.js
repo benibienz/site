@@ -50,10 +50,11 @@ export default function Index() {
         <Grid item container xs={12} sm={5} justify="center">
           <Image
             src="/holding_dog.jpg"
-            alt="Picture of the author"
+            alt="Me holding a dog"
             width={225}
             height={350}
             layout="intrinsic"
+            priority
             className={classes.img}
           />
         </Grid>
