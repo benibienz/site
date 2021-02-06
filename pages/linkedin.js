@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Container, makeStyles, Typography } from "@material-ui/core";
 import ContactForm from "../src/ContactForm";
 import Layout from "../src/Layout";
 import LinkTypography from "../src/Link";
@@ -15,7 +15,7 @@ export default function Contact() {
   const classes = useStyles();
   return (
     <Layout>
-      <div className={classes.root}>
+      <Container className={classes.root}>
         <Typography variant="h4" gutterBottom align="center">
           I'm not on LinkedIn much
         </Typography>
@@ -35,7 +35,7 @@ export default function Contact() {
         </LinkTypography>
         <br />
         <br />
-      </div>
+      </Container>
       <ContactForm />
     </Layout>
   );

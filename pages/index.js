@@ -1,4 +1,4 @@
-import { Card, Divider, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Card, Grid, makeStyles, Typography } from "@material-ui/core";
 import Image from "next/image";
 import React from "react";
 import Layout from "../src/Layout";
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    margin: theme.spacing(2, 0),
   },
   img: {
     borderRadius: "5px",
@@ -58,7 +59,6 @@ export default function Index() {
             className={classes.img}
           />
         </Grid>
-        <Divider />
         <Grid item xs={12} sm={6}>
           <div className={classes.center}>
             <Typography align="center" variant="subtitle2">
@@ -99,6 +99,13 @@ export default function Index() {
                 typographyProps={{ align: "center", variant: "subtitle1" }}
               >
                 LinkedIn
+              </LinkTypography>
+              <br />
+              <LinkTypography
+                href="https://soundcloud.com/tundra_uk"
+                typographyProps={{ align: "center", variant: "subtitle1" }}
+              >
+                Soundcloud
               </LinkTypography>
             </Card>
           </div>
