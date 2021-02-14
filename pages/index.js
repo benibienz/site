@@ -42,10 +42,10 @@ export default function Index() {
             University of Colorado Boulder. <br />
             <br />I am looking for a job in the US starting{" "}
             <strong>Summer 2021</strong>. <br />
-            <br />I will be applying for post-completion OPT, which with the
-            STEM extension will grant me{" "}
-            <strong>3 years of work authorization</strong> before I require visa
-            sponsorship. <br />
+            <br />I have applied for post-completion OPT, which with the STEM
+            extension will grant me{" "}
+            <strong>3 years of work authorization.</strong>
+            <br />
           </Typography>
         </Grid>
         <Grid item container xs={12} sm={5} justify="center">
