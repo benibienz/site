@@ -1,6 +1,8 @@
 import { Card, Grid, makeStyles, Typography } from "@material-ui/core";
+import { applySession } from "next-session";
 import Image from "next/image";
 import React from "react";
+import InitialDialog from "../src/Dialog";
 import Layout from "../src/Layout";
 import LinkTypography from "../src/Link";
 
@@ -24,10 +26,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Index() {
+export default function Index({ views }) {
   const classes = useStyles();
+  const openDialog = views > 1 ? false : true;
   return (
     <Layout>
+      <InitialDialog firstView={openDialog} />
       <Grid container spacing={3} justify="center" className={classes.grid}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h4" gutterBottom align="center">
@@ -122,4 +126,14 @@ export default function Index() {
       </LinkTypography>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  await applySession(req, res);
+  req.session.views = req.session.views ? req.session.views + 1 : 1;
+  return {
+    props: {
+      views: req.session.views,
+    },
+  };
 }

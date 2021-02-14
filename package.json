@@ -8,6 +8,7 @@
     "clsx": "latest",
     "next": "latest",
     "next-on-netlify": "latest",
+    "next-session": "^3.4.0",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest"
