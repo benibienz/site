@@ -6,22 +6,23 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import React from "react";
+import FirstVisitContext from "./Context";
 import LinkTypography from "./Link";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({ firstView }) {
-  const [open, setOpen] = React.useState(firstView);
+export default function AlertDialogSlide() {
+  const { visited, setVisited } = React.useContext(FirstVisitContext);
 
   const handleClose = () => {
-    setOpen(false);
+    setVisited(true);
   };
 
   return (
     <Dialog
-      open={open}
+      open={!visited}
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}
@@ -36,13 +37,13 @@ export default function AlertDialogSlide({ firstView }) {
           If you want a better example of my frontend skills, check out:
           <br />
           <br />
-          <LinkTypography
-            href="https://www.maketime.site/"
-            typographyProps={{ align: "center", variant: "subtitle1" }}
-          >
-            www.maketime.site
-          </LinkTypography>
         </DialogContentText>
+        <LinkTypography
+          href="https://www.maketime.site/"
+          typographyProps={{ align: "center", variant: "subtitle1" }}
+        >
+          www.maketime.site
+        </LinkTypography>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">

@@ -1,5 +1,4 @@
 import { Card, Grid, makeStyles, Typography } from "@material-ui/core";
-import { applySession } from "next-session";
 import Image from "next/image";
 import React from "react";
 import InitialDialog from "../src/Dialog";
@@ -26,30 +25,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Index({ views }) {
+export default function Index() {
   const classes = useStyles();
-  const openDialog = views > 1 ? false : true;
   return (
     <Layout>
-      <InitialDialog firstView={openDialog} />
+      <InitialDialog />
       <Grid container spacing={3} justify="center" className={classes.grid}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h4" gutterBottom align="center">
-            Hi.
+            Hi
           </Typography>
           <Typography variant="body1">
-            I'm a British/Swiss dual national. I have a weird Swiss name but
-            grew up in the UK.
+            I'm a British/Swiss engineer and data scientist. I've worked in a
+            variety of fields, from autonomous vehicles to marine permaculture
+            arrays (a.k.a. seaweed farming).
             <br />
             <br />
-            I'm now in the US, finishing up a Masters in Computer Science at the
-            University of Colorado Boulder. <br />
-            <br />I am looking for a job in the US starting{" "}
+            I have an MEng in Mechanical Engineering from Imperial College
+            London, and am currently finishing up a MS in Computer Science at
+            the University of Colorado Boulder. <br />
+            <br />I am looking for a job in or near Boston, MA, starting{" "}
             <strong>Summer 2021</strong>. <br />
-            <br />I have applied for post-completion OPT, which with the STEM
-            extension will grant me{" "}
-            <strong>3 years of work authorization.</strong>
-            <br />
           </Typography>
         </Grid>
         <Grid item container xs={12} sm={5} justify="center">
@@ -126,14 +122,4 @@ export default function Index({ views }) {
       </LinkTypography>
     </Layout>
   );
-}
-
-export async function getServerSideProps({ req, res }) {
-  await applySession(req, res);
-  req.session.views = req.session.views ? req.session.views + 1 : 1;
-  return {
-    props: {
-      views: req.session.views,
-    },
-  };
 }

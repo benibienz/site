@@ -3,10 +3,12 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
 import PropTypes from "prop-types";
 import React from "react";
+import FirstVisitContext from "../src/Context";
 import theme from "../src/theme";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+  const [visited, setVisited] = React.useState(false);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -25,10 +27,12 @@ export default function MyApp(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <FirstVisitContext.Provider value={{ visited, setVisited }}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </FirstVisitContext.Provider>
     </React.Fragment>
   );
 }
