@@ -1,6 +1,6 @@
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import LinkTypography from "./Link";
+import { StyledLink } from "./Link";
 
 const useStyles = makeStyles((theme) => ({
   "@keyframes gradient": {
@@ -39,12 +39,12 @@ const Layout = ({ children }) => {
   return (
     <div className={classes.root}>
       <Container maxWidth="md" className={classes.container}>
-        <LinkTypography
+        <StyledLink
           href="/"
           typographyProps={{ variant: "h2", align: "center" }}
         >
           Beni Bienz dot com
-        </LinkTypography>
+        </StyledLink>
         <br />
         <div className={classes.content}>{children}</div>
         <Typography

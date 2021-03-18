@@ -10,6 +10,9 @@ const styles = {
       color: "blueviolet",
     },
   },
+  anchor: {
+    textDecoration: "none",
+  },
 };
 
 const LinkTypography = ({ href, classes, children, typographyProps }) => {
@@ -22,4 +25,20 @@ const LinkTypography = ({ href, classes, children, typographyProps }) => {
   );
 };
 
-export default withStyles(styles)(LinkTypography);
+const AnchorTypography = ({ href, classes, children, typographyProps }) => {
+  return (
+    <a
+      target="_blank"
+      href={href}
+      rel="noopener noreferrer"
+      className={classes.anchor}
+    >
+      <Typography {...typographyProps} className={classes.link}>
+        {children}
+      </Typography>
+    </a>
+  );
+};
+
+export const StyledLink = withStyles(styles)(LinkTypography);
+export const StyledAnchor = withStyles(styles)(AnchorTypography);

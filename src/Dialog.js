@@ -7,7 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import React from "react";
 import FirstVisitContext from "./Context";
-import LinkTypography from "./Link";
+import { StyledAnchor } from "./Link";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -38,12 +38,12 @@ export default function AlertDialogSlide() {
           <br />
           <br />
         </DialogContentText>
-        <LinkTypography
+        <StyledAnchor
           href="https://www.maketime.site/"
           typographyProps={{ align: "center", variant: "subtitle1" }}
         >
           www.maketime.site
-        </LinkTypography>
+        </StyledAnchor>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">

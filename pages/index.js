@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import InitialDialog from "../src/Dialog";
 import Layout from "../src/Layout";
-import LinkTypography from "../src/Link";
+import { StyledAnchor, StyledLink } from "../src/Link";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     borderRadius: "5px",
+  },
+  coming: {
+    color: "#117305",
   },
 }));
 
@@ -65,61 +68,72 @@ export default function Index() {
               Sites I have made
             </Typography>
             <Card className={classes.card}>
-              <LinkTypography
+              <Typography align="center" variant="subtitle1">
+                Launch Party
+              </Typography>
+              <Typography
+                align="center"
+                variant="body2"
+                className={classes.coming}
+              >
+                (Coming soon)
+              </Typography>
+              <br />
+              <StyledAnchor
                 href="https://www.maketime.site/"
                 typographyProps={{ align: "center", variant: "subtitle1" }}
               >
                 Make Time
-              </LinkTypography>
+              </StyledAnchor>
               <br />
-              <LinkTypography
+              <StyledAnchor
                 href="https://www.playmaker.team/"
                 typographyProps={{ align: "center", variant: "subtitle1" }}
               >
                 Playmaker
-              </LinkTypography>
+              </StyledAnchor>
             </Card>
           </div>
         </Grid>
         <Grid item xs={12} sm={6}>
           <div className={classes.center}>
-            <Typography align="center" variant="subtitle2">
+            <StyledAnchor align="center" variant="subtitle2">
               Sites I am on
-            </Typography>
+            </StyledAnchor>
             <Card className={classes.card}>
-              <LinkTypography
+              <StyledAnchor
                 href="https://github.com/benibienz"
                 typographyProps={{ align: "center", variant: "subtitle1" }}
               >
                 Github
-              </LinkTypography>
+              </StyledAnchor>
               <br />
-              <LinkTypography
-                href="/linkedin"
+              <StyledAnchor
+                href="https://www.linkedin.com/in/benibienz/"
                 typographyProps={{ align: "center", variant: "subtitle1" }}
               >
                 LinkedIn
-              </LinkTypography>
+              </StyledAnchor>
               <br />
-              <LinkTypography
+              <StyledAnchor
                 href="https://soundcloud.com/tundra_uk"
                 typographyProps={{ align: "center", variant: "subtitle1" }}
               >
                 Soundcloud
-              </LinkTypography>
+              </StyledAnchor>
             </Card>
           </div>
         </Grid>
         <br />
       </Grid>
 
-      <LinkTypography
+      <StyledLink
         href="/contact"
         typographyProps={{ align: "center", variant: "subtitle1" }}
       >
         <br />
         Contact me
-      </LinkTypography>
+      </StyledLink>
     </Layout>
   );
 }
