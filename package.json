@@ -16,7 +16,6 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-on-netlify",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   }
 }
