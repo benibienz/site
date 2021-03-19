@@ -7,7 +7,6 @@
     "@material-ui/icons": "latest",
     "clsx": "latest",
     "next": "latest",
-    "next-on-netlify": "latest",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest"
