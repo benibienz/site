@@ -39,9 +39,9 @@ export default function Index() {
             Hi
           </Typography>
           <Typography variant="body1">
-            I'm a British/Swiss engineer and data scientist. I've worked in a
-            variety of fields, from autonomous vehicles to marine permaculture
-            arrays (a.k.a. seaweed farming).
+            I'm a full stack software engineer and data scientist. I've worked
+            in a variety of fields, from autonomous vehicles to marine
+            permaculture arrays (a.k.a. seaweed farming).
             <br />
             <br />
             I have an MEng in Mechanical Engineering from Imperial College
