@@ -53,7 +53,7 @@ export default function Index() {
         </Grid>
         <Grid item container xs={12} sm={5} justify="center">
           <Image
-            src="/holding_dog.jpg"
+            src="/holding_dog.jpeg"
             alt="Me holding a dog"
             width={225}
             height={350}
