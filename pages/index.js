@@ -97,9 +97,9 @@ export default function Index() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <div className={classes.center}>
-            <StyledAnchor align="center" variant="subtitle2">
+            <Typography align="center" variant="subtitle2">
               Sites I am on
-            </StyledAnchor>
+            </Typography>
             <Card className={classes.card}>
               <StyledAnchor
                 href="https://github.com/benibienz"
