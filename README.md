@@ -1,3 +1,1 @@
-# benibienz.com
-
-Made with Nextjs and Material-UI.
+benibienz dot com
